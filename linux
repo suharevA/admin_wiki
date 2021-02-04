@@ -16,3 +16,9 @@ cd /opt/
 gunzip -f dump_2020-08-11_16_14_47.gz
 # RECOVERY
 cat dump_2020-08-11_16_14_47 | docker exec -i data_postgres_1 psql -U postgres
+
+#Закрыть все сеансы / соединения в PostgreSQL
+#Имя базы cmdb. Смотрим соединения к базе cmdb 
+SELECT * FROM pg_stat_activity WHERE datname = 'cmdb';
+#Разорвите активные соединения, выполнив
+SELECT pg_terminate_backend (pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'cmdb';
