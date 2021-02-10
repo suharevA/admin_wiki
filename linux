@@ -22,3 +22,9 @@ cat dump_2020-08-11_16_14_47 | docker exec -i data_postgres_1 psql -U postgres
 SELECT * FROM pg_stat_activity WHERE datname = 'cmdb';
 #Разорвите активные соединения, выполнив
 SELECT pg_terminate_backend (pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'cmdb';
+
+
+Install pip first
+sudo apt-get install python3-pip
+Then install virtualenv using pip3
+sudo pip3 install virtualenv 
