@@ -28,3 +28,11 @@ SELECT pg_terminate_backend (pg_stat_activity.pid) FROM pg_stat_activity WHERE p
 sudo apt-get install python3-pip
 #Then install virtualenv using pip3
 sudo pip3 install virtualenv 
+
+
+Если вы используете Docker, то время от времени ваш диск заполняется зависшими образами и томами докеров. Просто выполните следующие команды, чтобы избавиться от них и освободить дисковое пространство на вашем компьютере:
+# remove dangling images
+docker rmi -f $(docker images -f dangling=true -q)
+
+# remove dangling volumes
+docker volume rm $(docker volume ls -qf dangling=true)
