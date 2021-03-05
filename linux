@@ -7,6 +7,10 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 scp file user@host:/path/to/file  
 # из удаленной системы
 scp user@host:/path/to/file /local/path/to/file 
+# копировать по списку ( при условии что ssh-key проброшен )
+for node in rusk2 rusk3; do
+    scp ~/hadoop/etc/hadoop/* $node:/home/hadoop/hadoop/etc/hadoop/;
+done
 
 # Резервное копирование / восстановление базы данных PostgreSQL в docker
 # имя контейнера data_postgres_1
